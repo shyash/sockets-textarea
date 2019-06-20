@@ -16,7 +16,7 @@ function newConnection(socket) {
 		socket.broadcast.emit('textareaChanged', data)
 		console.log(data)
 	}
-}
+} 
 
 app.get("/", function (req,res) {
 	res.sendFile('index.html', {root: __dirname + '/views'})

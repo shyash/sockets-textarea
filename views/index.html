@@ -18,8 +18,23 @@
 			font-size: 25px;
 		}
 	</style>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
 </head>
 <body>
 	<div><textarea name="" id="area"></textarea></div>
+<script>
+let socket
+socket = io.connect('http://127.0.0.1:8800')
+let area = document.querySelector("#area")
+
+area.addEventListener("keyup", function() {
+	socket.emit('textareaChanged',area.value)
+})
+
+socket.on('textareaChanged', changeTextarea)
+function changeTextarea(data) {
+	area.value = data
+}
+</script>
 </body>
 </html>
